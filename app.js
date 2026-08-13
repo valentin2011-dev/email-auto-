@@ -105,16 +105,30 @@ $("clientForm").addEventListener("submit", (event) => {
   renderClients();
   closeModal("clientModal");
 
-  // Futur branchement Make :
-  // fetch("TON_WEBHOOK_MAKE", {
-  //   method: "POST",
-  //   headers: {"Content-Type": "application/json"},
-  //   body: JSON.stringify({
-  //     name: client.name,
-  //     email: client.email,
-  //     ownerEmail: settings.ownerEmail
-  //   })
-  // });
+   fetch("https://hook.eu1.make.com/sxsxnji4tp5161r5sv5ljvq8sg560arp", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      name: client.name,
+      email: client.email,
+      ownerEmail: settings.ownerEmail,
+      createdAt: client.createdAt
+    })
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error("Erreur webhook Make");
+    }
+
+    client.welcomeSent = true;
+    saveClients();
+    renderClients();
+  })
+  .catch(error => {
+    console.error("Erreur Make :", error);
+  });
 });
 
 $("settingsBtn").addEventListener("click", () => {
