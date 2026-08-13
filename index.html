@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#1d1d1d">
+  <meta name="description" content="V-Clients — gestion simple de vos clients">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+  <title>V-Clients</title>
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div>
+        <h1 id="greeting">Bonjour</h1>
+        <p id="date"></p>
+      </div>
+      <button class="icon-button" id="settingsBtn" aria-label="Ouvrir les paramètres">
+        <span></span><span></span><span></span>
+      </button>
+    </header>
+
+    <section class="clients-panel">
+      <div class="panel-title">
+        <span>Clients</span>
+        <span id="clientCount">0</span>
+      </div>
+      <div id="clientList" class="client-list"></div>
+      <div id="emptyState" class="empty-state">
+        <div class="empty-dot"></div>
+        <p>Aucun client</p>
+        <small>Appuie sur le bouton + pour commencer.</small>
+      </div>
+    </section>
+
+    <button class="add-button" id="addClientBtn" aria-label="Ajouter un client">
+      <span>+</span>
+    </button>
+  </main>
+
+  <div class="modal hidden" id="clientModal">
+    <div class="modal-card">
+      <button class="close-btn" data-close="clientModal">×</button>
+      <h2>Nouveau client</h2>
+      <p class="modal-subtitle">Ajoute les informations de ton client.</p>
+      <form id="clientForm">
+        <label>
+          Nom
+          <input id="clientName" type="text" autocomplete="name" placeholder="Jean Dupont" required>
+        </label>
+        <label>
+          Adresse email
+          <input id="clientEmail" type="email" autocomplete="email" placeholder="jean@exemple.fr" required>
+        </label>
+        <button class="primary-btn" type="submit">Ajouter le client</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal hidden" id="clientInfoModal">
+    <div class="modal-card">
+      <button class="close-btn" data-close="clientInfoModal">×</button>
+      <div class="client-avatar" id="infoAvatar">J</div>
+      <h2 id="infoName">Client</h2>
+      <p class="email-line" id="infoEmail"></p>
+      <div class="info-box">
+        <span>Statut</span>
+        <strong id="infoStatus">Bienvenue non envoyé</strong>
+      </div>
+      <div class="info-box">
+        <span>Ajouté le</span>
+        <strong id="infoDate"></strong>
+      </div>
+      <button class="danger-btn" id="deleteClientBtn">Supprimer le client</button>
+    </div>
+  </div>
+
+  <div class="modal hidden" id="settingsModal">
+    <div class="modal-card">
+      <button class="close-btn" data-close="settingsModal">×</button>
+      <h2>Paramètres</h2>
+      <p class="modal-subtitle">Les réglages de cette application.</p>
+
+      <label>
+        Ton email
+        <input id="ownerEmail" type="email" placeholder="ton@email.fr">
+      </label>
+
+      <div class="setting-row">
+        <div>
+          <strong>Thème</strong>
+          <small>Choisis l'apparence de l'application.</small>
+        </div>
+        <select id="themeSelect">
+          <option value="dark">Sombre</option>
+          <option value="light">Clair</option>
+        </select>
+      </div>
+
+      <div class="about-box">
+        <strong>V-Clients</strong>
+        <span>Version 1.0 · V-Développement</span>
+      </div>
+
+      <button class="primary-btn" id="saveSettingsBtn">Enregistrer</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
