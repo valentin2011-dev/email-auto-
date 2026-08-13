@@ -1,0 +1,11 @@
+{
+  "name": "V-Clients",
+  "short_name": "V-Clients",
+  "description": "Gestion simple des clients — V-Développement",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#1d1d1d",
+  "lang": "fr",
+  "icons": []
+}
